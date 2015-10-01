@@ -1,0 +1,23 @@
+<%= form_for :chore, url: {action: "create"}, method: :post do |f| %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_area :name, placeholder: 'your Chore here', rows: '10', style: "width: 25%" %>
+  </p>
+
+  <p>
+    <%= f.submit 'Create Chore' %>
+  </p>
+<% end %>
+
+<ul>
+
+<%= render partial: 'list', locals: {chores: @chores} %>
+
+</ul>
+
+<h2> <%= @chores.where(completed: false).count %> items left </h2>
+
+<%= link_to "All", chores_path, class: "btn", method: :get %>
+<%= link_to "Active", active_chores_path, class: "btn", method: :get %>
+<%= link_to "Completed", completed_chores_path, class: "btn", method: :get %>
+<%= link_to "Clear completed", destroy_completed_chores_path, class: "btn", method: :delete %>

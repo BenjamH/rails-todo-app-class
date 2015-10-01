@@ -1,0 +1,9 @@
+<% @chores.each do |chore| %>
+<%= link_to raw("<span class='glyphicon glyphicon-triangle-top' aria-hidden='true'></span>"), toggle_chore_path(chore), class: "btn btn-success", method: :post %>
+  <% if chore.completed %>
+     <li><s> <%= chore.name %> </s></li>
+  <% else %>
+     <li> <%= chore.name %> </li>
+  <% end %>
+  <%= link_to "Delete", chore_path(chore), class: "btn", method: :delete %>
+<% end %>

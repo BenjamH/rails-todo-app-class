@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  root 'chores#index'
+
+  resources :chores do
+    member do
+      post :toggle
+    end
+    collection do
+      get :active
+      get :completed
+      delete :destroy_completed
+    end
+  end
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
